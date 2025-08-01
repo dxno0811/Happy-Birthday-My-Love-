@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magical Scrapbook</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #fcecd6;
+      font-family: 'Garamond', serif;
+      background-image: url('parchment.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .book {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      perspective: 2000px;
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      display: flex;
+      flex-direction: row;
+      transform-style: preserve-3d;
+      transition: transform 1s ease-in-out;
+    }
+
+    .spread {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .left, .right {
+      width: 48%;
+      background-color: rgba(255, 255, 255, 0.75);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .left img, .right img, .left video, .right video {
+      max-width: 100%;
+      border: 2px dashed #965a38;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(1) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+      100% { opacity: 0; transform: scale(1) rotate(360deg); }
+    }
+
+    .cover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('cover.jpg') no-repeat center center/cover;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 32px;
+      color: white;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background music -->
+  <audio id="bg-music" preload="auto" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Book cover -->
+  <div class="cover" onclick="openBook()">Tap to Open</div>
+
+  <!-- Scrapbook pages -->
+  <div class="book" id="book">
+    <!-- Page 1 -->
+    <div class="page" id="p0">
+      <div class="spread">
+        <div class="left">
+          <img src="photo1.jpg" />
+          <p>Today’s not just your birthday—it’s the day the world got someone amazing 🖤. I didn’t know back then how much you’d mean to me, but now, this day is everything 🥹. I’m so grateful to celebrate the day you came into this world 👻.
+Happy birthday, my love 🖤🧡. I am so lucky to walk through this life with you by my side 👻.</p>
+        </div>
+        <div class="right">
+          <video src="video1.mp4" controls></video>
+          <p>When We Met
+I’ll never forget the day we met 🧡. There was something about you—your smile, your vibe—that stuck with me 😘. It felt like fate 🦕. Looking back, I know it was the beginning of something special 💋.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="p1">
+      <div class="spread">
+        <div class="left">
+          <img src="photo2.jpg" />
+          <img src="photo3.jpg" />
+          <p>All the Things I Love
+I love your laugh, your kind heart, and the way you make even boring days feel fun 👻🫂. You’re caring, strong, and always real 🖤. Just being with you makes life brighter 🥹.</p>
+        </div>
+        <div class="right">
+          <video src="video2.mp4" controls></video>
+          <p>Thank You for Loving Me
+Thank you for being so patient, loyal, and loving 🧡. You support me through everything, and I never feel alone when I’m with you 🫂. You love me in a way that feels safe and true 💋.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="p2">
+      <div class="spread">
+        <div class="left">
+          <img src="photo4.jpg" />
+          <p>The Little Moments
+I cherish the little things—the late-night talks, your hand in mine, your silly jokes 🦕. You make everyday moments feel like magic 🖤. With you, even doing nothing feels perfect 😘.</p>
+        </div>
+        <div class="right">
+          <img src="photo5.jpg" />
+          <p>My Safe Place
+You’re not just my boyfriend—you’re my peace 🧡. You calm my mind, protect my heart, and make me feel at home 🥹🫂. I never have to pretend with you 💋</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="p3">
+      <div class="spread">
+        <div class="left">
+          <video src="video3.mp4" controls></video>
+          <p>What We’ve Built
+We’ve built something strong—full of laughter, trust, and real love 🫂. Through ups and downs, we’ve grown closer 🥹. I wouldn’t trade what we have for anything 💋.</p>
+        </div>
+        <div class="right">
+          <img src="photo6.jpg" />
+          <img src="photo7.jpg" />
+          <p>Always & Forever
+You are my heart, my home, my everything 🖤. I hope you feel just how deeply you’re loved today and every day 🥹😘. Happy birthday, babe. Always and forever 💋🦕</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page" id="p4">
+      <div class="spread">
+        <div class="left">
+          <img src="photo8.jpg" />
+          <p> Our Future
+I picture us building a life full of love, adventure, and lazy mornings together 👻🧡. There’s so much ahead of us, and I can’t wait to share it all with you 🫂</p>
+        </div>
+        <div class="right">
+          <video src="video4.mp4" controls></video>
+          <p>You Make Life Sweeter
+Even the simplest moments feel special with you 🧡. You’ve added joy, laughter, and calm to my life 🫂. You’re my favorite part of every day😌.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page" id="p5">
+      <div class="spread">
+        <div class="left">
+          <img src="photo9.jpg" />
+          <img src="photo10.jpg" />
+          <p>🧿🫶🏻🥺🫂</p>
+        </div>
+        <div class="right">
+          <video src="video5.mp4" controls></video>
+			 <video src="video6.mp4" controls></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="page" id="p6">
+      <div class="spread">
+        <div class="left">
+          <video src="video10.mp4" controls></video>
+           <p>Just knowing you’re there—even in silence—makes everything better 🥹. You don’t even have to say much; your presence alone feels like home 💋🦕.</p>
+        </div>
+        <div class="right">
+          <img src="photo11.jpg" />
+          <img src="photo12.jpg" />
+          <p>👻💋.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page" id="p7">
+      <div class="spread">
+        <div class="left">
+          <img src="photo13.jpg" />
+          <p> I Love You in Every Way I love every version of you—happy, tired, silly, serious 🖤. You’re real, and that’s what I adore 🥹. You love me so fully, and I’ll always love you the same 🧡.</p>
+        </div>
+        <div class="right">
+          <video src="video7.mp4" controls></video>
+			 <p>Every day feels better with you in it 😘. Whether it’s a quick message, a tight hug, or hearing your voice—you are always the best part 🧡🫂.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 9 -->
+    <div class="page" id="p8">
+      <div class="spread">
+        <div class="left">
+          <video src="video8.mp4" controls></video>
+			  <p>Every day feels better with you in it 😘. Whether it’s a quick message, a tight hug, or hearing your voice—you are always the best part 🧡🫂.</p>
+        </div>
+        <div class="right">
+          <img src="photo14.jpg" />
+          <p>You’re My Favorite Person You get me in ways no one else does 🫂. Every memory with you is something I hold close 🦕. You’re my safe place and my forever favorite 💋.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page 10 -->
+    <div class="page" id="p9">
+      <div class="spread">
+        <div class="left">
+          <img src="photo15.jpg" />
+          <p>Here’s to more memories, more laughter, and more of us 🧡. Let’s keep building something beautiful—just you and me 🫂👻. Happy birthday, baby 😘.</p>
+        </div>
+        <div class="right">
+          <video src="video9.mp4" controls></video>
+          <p>HAPPY BIRTHDAY MY LOVE🖤🧡</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.page');
+
+    function openBook() {
+      const cover = document.querySelector('.cover');
+      const music = document.getElementById('bg-music');
+
+      cover.style.display = 'none';
+      pages[currentPage].style.transform = 'translateX(0)';
+
+      // Try to play music (unmuted) after user tap
+      music.play().catch(err => {
+        console.log("Autoplay blocked by browser:", err);
+      });
+    }
+
+    function showPage(index) {
+      pages.forEach((p, i) => {
+        if (i === index) {
+          p.style.transform = 'translateX(0)';
+        } else if (i < index) {
+          p.style.transform = 'translateX(-100%)';
+        } else {
+          p.style.transform = 'translateX(100%)';
+        }
+      });
+    }
+
+    function swipeHandler() {
+      let touchstartX = 0;
+      let touchendX = 0;
+
+      function checkDirection() {
+        if (touchendX < touchstartX - 50 && currentPage < pages.length - 1) {
+          currentPage++;
+          showPage(currentPage);
+        }
+        if (touchendX > touchstartX + 50 && currentPage > 0) {
+          currentPage--;
+          showPage(currentPage);
+        }
+      }
+
+      document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
+
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        checkDirection();
+      });
+    }
+
+    swipeHandler();
+    showPage(currentPage);
+  </script>
+</body>
+</html>
